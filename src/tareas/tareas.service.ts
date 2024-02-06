@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Status, Tarea } from './tareas.entity.js';
+import { Tarea } from './tareas.entity.js';
 import { TareaStatus } from './tareas.entity.js';
 import { v4 } from 'uuid';
 import { UpdateTareaDto } from './dto/tarea.dto.js';
@@ -26,7 +26,7 @@ export class TareasService {
 
   async updateTareas(id: string, updateFiles: UpdateTareaDto) {
 
-    const tareaFind = await this.tareaRepo.findOne(id);
+    const tareaFind = await this.tareaRepo.findOneBy({ id: id });
     this.tareaRepo.merge(await tareaFind, updateFiles);
     return this.tareaRepo.save(tareaFind);
   }
@@ -37,6 +37,6 @@ export class TareasService {
   }
 
   async getTareaById(id: string){
-    return await this.tareaRepo.findOne(id);
+    return await this.tareaRepo.findOneBy({ id: id });
   }
 }

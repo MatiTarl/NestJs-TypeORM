@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { TareasService } from './tareas.service.js';
 import { CrearTareaDto, UpdateTareaDto } from './dto/tarea.dto.js';
 
